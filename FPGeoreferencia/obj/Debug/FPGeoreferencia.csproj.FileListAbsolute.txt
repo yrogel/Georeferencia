@@ -170,7 +170,6 @@ C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\bin\es\Microsoft.AspNet
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\bin\es\Microsoft.AspNet.FriendlyUrls.resources.dll
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\bin\es\Microsoft.Windows.Design.Interaction.resources.dll
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\bin\es\Microsoft.Windows.Design.Extensibility.resources.dll
-C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\obj\Debug\FPGeoreferencia.csprojResolveAssemblyReference.cache
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\obj\Debug\FPGeoreferencia.dll.licenses
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\obj\Debug\FPGeoreferencia.dll
 C:\Desarrollo\Aplicaciones\Georeferencia\FPGeoreferencia\obj\Debug\FPGeoreferencia.pdb
