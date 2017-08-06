@@ -219,20 +219,5 @@
             vector['lat'] = RadToDeg(latlon[0]);
             return vector;
         }
-
-        function ObtenerCentroCultivo() {
-            var centroCultivo = $("#<%= LblDireccion.ClientID %>").val();
-            var obj = { "id": centroCultivo };
-
-            $.ajax({
-                type: "POST",
-                url: '<%= Page.ResolveUrl("~/Model/Concesion/DetailConcesion.aspx/ObtenerCentroCultivo")%>',
-                data: JSON.stringify(obj),
-                contentType: "application/json; charset=utf-8",
-                dataType: "json",
-                success: OnSuccess,
-                error: OnError
-            });
-        }
     </script>
 </asp:Content>
