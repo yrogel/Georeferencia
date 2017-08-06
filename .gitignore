@@ -1,4 +1,1 @@
-*.dll
-*.pdb
-*.xml
-/bin/*
+/bin
