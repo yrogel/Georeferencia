@@ -198,7 +198,8 @@
         function UtmToLongLat(utmX, utmY) {
 
             var latlon = new Array(2);
-            var x, y, zone, southhemi;
+            var x, y, zone;
+            //var southhemi;
 
             x = parseFloat(utmX);
             y = parseFloat(utmY);
