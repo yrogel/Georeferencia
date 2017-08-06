@@ -1,0 +1,207 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="FPGeoreferencia.SiteMaster" %>
+<%@ Import Namespace="System.Web.Optimization" %>
+
+<!DOCTYPE html>
+<html lang="es">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8" />
+    <title>Fishing Partners</title>
+    
+    <!-- Web Fonts -->
+	<link rel='stylesheet' type='text/css' href='//fonts.googleapis.com/css?family=Open+Sans:400,300,600&amp;subset=cyrillic,latin'>
+
+    <link href="favicon.ico" rel="shortcut icon" type="image/x-icon" />
+
+    <asp:PlaceHolder runat="server">        
+        <script src="<%: ResolveUrl("~/Scripts/modernizr-2.6.2.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-1.8.2.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/jquery-1.8.2.min.js") %>"></script>
+        <script src="<%: ResolveUrl("~/Scripts/Utils.js") %>"></script>
+       
+        <%: Styles.Render("~/Content/css") %>
+        <!-- CSS Global Compulsory -->
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/plugins/bootstrap/css/bootstrap.min.css")%>" >
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/css/style.css")%>">
+
+        <!-- CSS Header and Footer -->
+	    <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/css/headers/header-default.css")%>"> 
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/css/footers/footer-v1.css")%>">
+        
+        <!-- CSS Implementing Plugins -->
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/plugins/animate.css")%>">
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/plugins/line-icons/line-icons.css")%>">
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/plugins/font-awesome/css/font-awesome.min.css")%>">
+        
+        <!-- CSS Theme -->
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/css/theme-colors/default.css")%>">
+        <link rel="stylesheet" href="<%: ResolveUrl("~/Content/assets/css/theme-skins/dark.css")%>">
+        
+       
+
+    </asp:PlaceHolder>
+    <meta name="viewport" content="width=device-width" />
+    <asp:ContentPlaceHolder runat="server" ID="HeadContent" />
+
+</head>
+<body>
+    
+    <header>
+        
+        <div class="wrapper">
+        <!--=== Header ===-->
+		<div class="header">
+			<div class="container">
+                <a class="logo">
+                    <asp:Image ImageUrl="~/Content/assets/img/logo-2.png" runat="server"/>
+				</a>
+				<!-- Topbar -->
+				<div class="topbar">
+					<ul class="loginbar pull-right">
+						<li class="hoverSelector">
+							<i class="fa fa-globe"></i>
+							<a href="http://www.fishingpartners.cl/">Sitio</a>
+						</li>
+						<li class="topbar-devider"></li>
+						<li><a href="#">
+						   <asp:ContentPlaceHolder runat="server" ID="ContentLogin">
+                               <asp:Label runat="server" ID="lblUsuarioLogin"></asp:Label>
+						   </asp:ContentPlaceHolder>
+						    </a></li>
+                        <li class="topbar-devider"></li>
+						<li><a href='<%=ResolveUrl("~/Login") %>'>Cerrar Sesión</a></li>
+					</ul>
+				</div>
+				<!-- End Topbar -->
+
+				<!-- Toggle get grouped for better mobile display -->
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-responsive-collapse">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="fa fa-bars"></span>
+				</button>
+				<!-- End Toggle -->
+			</div><!--/end container-->
+            
+            <input type="hidden" name="txtMenu" ID="txtMenu" runat="server"/>
+
+			<!-- Collect the nav links, forms, and other content for toggling -->
+			<div class="collapse navbar-collapse mega-menu navbar-responsive-collapse">
+				<div class="container">
+					<ul class="nav navbar-nav">
+					    
+						<!-- Administracion -->
+						<li id="administracion" runat="server" class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+								Administración
+							</a>
+							<ul class="dropdown-menu">
+								<li onclick="Main(1)"><a href='<%=ResolveUrl("~/Concesion/Listado") %>'><i class="fa fa-bars"></i>Concesiones</a></li>
+							</ul>
+						</li>
+						<!-- End Administracion -->
+
+						<!-- Reporte -->
+						<li id="reporte" runat="server" class="dropdown">
+							<a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+								Reportes
+							</a>
+						</li>
+						<!-- End Reporte -->
+                        
+                        <asp:ContentPlaceHolder runat="server" ID="ContentConfiguracion" Visible="False">
+                            <!-- Configuración -->
+						    <li id="configuracion" runat="server" class="dropdown">
+							    <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown">
+								    Configuración
+							    </a>
+							    <ul class="dropdown-menu">
+							        <li onclick="Main(3)"><a href='<%=ResolveUrl("~/Configuracion/Usuario") %>'><i class="fa fa-bars"></i>Usuario</a></li>
+								    <li onclick="Main(3)"><a href='<%=ResolveUrl("~/Configuracion/FaunaAcompañante") %>'><i class="fa fa-bars"></i>Fauna Acompañante</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/FormaCosecha") %>'><i class="fa fa-bars"></i>Forma Cosecha</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/Material") %>'><i class="fa fa-bars"></i>Material</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/Proveedor") %>'><i class="fa fa-bars"></i>Proveedor</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/TipoCosecha") %>'><i class="fa fa-bars"></i>Tipo Cosecha</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/TipoCuelga") %>'><i class="fa fa-bars"></i>Tipo Cuelga</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/TipoLinea") %>'><i class="fa fa-bars"></i>Tipo Línea</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/TipoSiembra") %>'><i class="fa fa-bars"></i>Tipo Siembra</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/TipoVolumen") %>'><i class="fa fa-bars"></i>Tipo Volumen</a></li>
+                                    <li><a href='<%=ResolveUrl("~/Configuracion/UbicacionCuelga") %>'><i class="fa fa-bars"></i>Ubicación Cuelga</a></li>
+							    </ul>
+						    </li>
+                            <!-- End Configuración -->
+                        </asp:ContentPlaceHolder>
+                       
+					</ul>
+				</div><!--/end container-->
+			</div><!--/navbar-collapse-->
+		</div>
+            
+		<div class="breadcrumbs">
+		    <asp:ContentPlaceHolder runat="server" ID="MainBreadcrumbs" />
+		</div>
+
+        <div class="container content">
+            <form runat="server">
+                 <%--<asp:ScriptManager runat="server" EnablePageMethods="True">
+                    <Scripts>
+                        <asp:ScriptReference Name="jquery" />
+                        <asp:ScriptReference Name="jquery.ui.combined" />
+                    </Scripts>
+                </asp:ScriptManager>--%>
+                <asp:ContentPlaceHolder runat="server" ID="MainContent" />
+            </form>
+        </div>
+
+      </div>
+           
+    </header>
+    
+    
+      <!-- JS Global Compulsory -->
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/plugins/jquery/jquery.min.js") %>"></script>
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/plugins/jquery/jquery-migrate.min.js") %>"></script>
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/plugins/bootstrap/js/bootstrap.min.js") %>"></script>
+	<!-- JS Implementing Plugins -->
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/plugins/back-to-top.js") %>"></script>
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/plugins/smoothScroll.js") %>"></script>
+	<!-- JS Customization -->
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/js/custom.js") %>"></script>
+	<!-- JS Page Level -->
+	<script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/js/app.js") %>"></script>
+    <script type="text/javascript" src="<%: ResolveUrl("~/Content/assets/js/plugins/style-switcher.js") %>"></script>
+
+	<script type="text/javascript">
+	    
+	    jQuery(document).ready(function() {
+	        App.init();
+	        StyleSwitcher.initStyleSwitcher();
+	    });
+
+	    //$('ul.'+ view +' li a').on('click', function (e) {
+	    //    //e.preventDefault();
+	    //    $('ul.navbar-nav li').removeClass('dropdown').removeClass('active');
+	    //    $(this).parents('li').addClass('dropdown').addClass('active');
+	    //    //return false;
+	    //});
+
+	    function Main(id) {
+	        <%--alert(id);
+	        $("#<%= txtMenu.ClientID %>").val(id);--%>
+	        //alert(id);
+	        //if (id == 1) {
+	        //    $("#administracion").removeClass("dropdown");
+	        //    alert('paso');
+	        //} else {
+	        //    if (id == 2) {
+	        //        $("#reporte").addClass("dropdown active");
+	        //    } else {
+	        //        if (id == 3) {
+	        //            $("#configuracion").addClass("dropdown active");
+	        //        }
+	        //    }
+	        //}
+	    }
+	</script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+/* Add here all your css styles (customizations) */
+.margin-bottom-10-aux {margin-bottom:10px;width: 200px;}
+
+.validation-error {
+    color: #e80c4d;
+    font-weight: bold;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Roboto:400,300,600,400italic);
+.pcmCellCaption {
+    white-space: nowrap;
+    padding-top: 10px;
+    vertical-align: top;
+    text-align: right;
+    padding-right: 15px;
+}
+.pcmCellText {
+    padding-left: 0px;
+    padding-top: 0px;
+}
+.pcmCheckBox {
+    padding-left: 6px;
+    padding-bottom: 10px;
+}
+.pcmCreateAccount {
+    text-align: right;
+    padding-top: 8px;
+    padding-bottom: 4px;
+}
+.pcmButton {
+    padding-left: 10px;
+    padding-top: 10px;
+    padding-bottom: 0px;
+}
+.pcmSideSpacer {
+    width: 60px;
+    height: 1px;
+}
+       
+.input-text {
+    padding: 4px;
+    margin: 5px 0 5px 0; 
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-size: 12px;  
+    width: 200px;   
+}
+.label-text {
+    font-family: "Roboto", Helvetica, Arial, sans-serif;
+    font-weight: bold;
+    font-size: 12px;
+}
