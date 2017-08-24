@@ -3,12 +3,6 @@
 <%@ Register Assembly="DevExpress.Web.v14.2, Version=14.2.6.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" Namespace="DevExpress.Web" TagPrefix="dx" %>
 
 <asp:Content ID="HeadContent" ContentPlaceHolderID="HeadContent" runat="server">
-    <script>
-        function soloNumeros(e) {
-            var key = window.Event ? e.which : e.keyCode;
-            return (key >= 48 && key <= 57);
-        }
-    </script>
 </asp:Content>
 
 <asp:Content runat="server" ID="Content1" ContentPlaceHolderID="MainBreadcrumbs">
@@ -50,6 +44,10 @@
 	</div>
     
     <input type="button" id="btnNewConcesion" class="btn rounded btn-success" value="Nuevo"/> 
+    <div style="height: 10px;"></div>
+    <div runat="server" id="mensajeValidacion">
+        <strong><asp:Label runat="server" ID="lblErrorValidacion" /></strong>
+	</div>
     
     <dx:ASPxPopupControl ID="PopUpNewConcesion" runat="server" ShowCloseButton="False" CloseAction="CloseButton"
         PopupHorizontalAlign="WindowCenter" AllowDragging="True" PopupVerticalAlign="WindowCenter" ClientInstanceName="PopUpNewConcesion"
@@ -112,24 +110,6 @@
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
-                                 <tr>
-                                    <td class="pcmCellCaption" >
-                                        <label class="label-text">Total Modulos</label>
-                                    </td>
-                                    <td class="pcmCellText">
-                                        <input type="text" name="txtModulos" ID="txtModulos" onKeyPress="return soloNumeros(event)" class="input-text" runat="server" required/>
-                                        <span class="color-red">*</span>
-                                    </td>
-                                </tr>
-                                 <tr>
-                                    <td class="pcmCellCaption" >
-                                        <label class="label-text">Total Lineas</label>
-                                    </td>
-                                    <td class="pcmCellText">
-                                        <input type="text" name="txtLineas" ID="txtLineas" onKeyPress="return soloNumeros(event)" class="input-text" runat="server" required/>
-                                        <span class="color-red">*</span>
-                                    </td>
-                                </tr>
                                 <tr>
                                     <td>&nbsp;</td>
                                     <td>
@@ -185,11 +165,13 @@
                 <dx:GridViewDataTextColumn FieldName="Superficie" VisibleIndex="6" Caption="Superficie">
                     <HeaderStyle Font-Bold="True" />
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Total_Modulos" VisibleIndex="7" Caption="Total Modulos">
+                <dx:GridViewDataTextColumn FieldName="Total_Modulos" VisibleIndex="7" Caption="Total Módulos">
                     <HeaderStyle Font-Bold="True" />
+                    <EditFormSettings Visible="False" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Total_Lineas" VisibleIndex="8" Caption="Total Lineas">
                     <HeaderStyle Font-Bold="True" />
+                    <EditFormSettings Visible="False" />
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="10" Caption="Coordenadas UTM">
                   <HeaderStyle Font-Bold="True" />
@@ -244,7 +226,7 @@
                                 </tr>
                                 <tr>
                                     <td class="pcmCellCaption" >
-                                        <label class="label-text">Coordenada UTM X</label>
+                                        <label class="label-text">Coordenada UTM E</label>
                                     </td>
                                     <td class="pcmCellText">
                                         <input type="text" name="txtUtmX" ID="txtUtmX" class="input-text" runat="server" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
@@ -253,7 +235,7 @@
                                 </tr>
                                 <tr>
                                     <td class="pcmCellCaption" >
-                                        <label class="label-text">Coordenada UTM Y</label>
+                                        <label class="label-text">Coordenada UTM N</label>
                                     </td>
                                     <td class="pcmCellText">
                                         <input type="text" name="txtUtmY" ID="txtUtmY" class="input-text" runat="server" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))"/>
@@ -296,11 +278,17 @@
                                         <HeaderStyle Font-Bold="True" />
                                         <EditFormSettings Visible="False" />
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="Coordenada_X" VisibleIndex="2" Caption="Coordenada X">
+                                    <dx:GridViewDataTextColumn FieldName="Coordenada_X" VisibleIndex="2" Caption="Coordenada UTM E">
                                         <HeaderStyle Font-Bold="True" />
+                                        <EditItemTemplate>
+                                             <input type="text" name="Coordenada_X" ID="Coordenada_X" runat="server" value='<%# Bind("Coordenada_X") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                                        </EditItemTemplate>
                                     </dx:GridViewDataTextColumn>
-                                    <dx:GridViewDataTextColumn FieldName="Coordenada_Y" VisibleIndex="3" Caption="Coordenada Y">
+                                    <dx:GridViewDataTextColumn FieldName="Coordenada_Y" VisibleIndex="3" Caption="Coordenada UTM N">
                                         <HeaderStyle Font-Bold="True" />
+                                        <EditItemTemplate>
+                                             <input type="text" name="Coordenada_Y" ID="Coordenada_Y" runat="server" value='<%# Bind("Coordenada_Y") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                                        </EditItemTemplate>
                                     </dx:GridViewDataTextColumn>
             
                                 </Columns>
@@ -332,8 +320,6 @@
                 <asp:Parameter Name="Nombre" Type="String" />
                 <asp:Parameter Name="Direccion" Type="String" />
                 <asp:Parameter Name="Superficie" Type="String" />
-                <asp:Parameter Name="Total_Modulos" Type="Int32" />
-                <asp:Parameter Name="Total_Lineas" Type="Int32" />
             </UpdateParameters>
         </asp:SqlDataSource>
     
@@ -355,15 +341,43 @@
    
     <script>
         $("#btnNewConcesion").click(function () {
-            $("#<%= txtCodigo.ClientID %>").focus();
-            $("#<%= mensaje.ClientID %>").css('display', 'none');
-            ClearFormConcesion();
-            PopUpNewConcesion.Show();
+
+            $("#<%= mensajeValidacion.ClientID %>").css('display', 'none');
+
+            var idCliente = $("#<%= Hididuser.ClientID %>").val();
+            var obj = { "idCliente": idCliente };
+
+            $.ajax({
+                type: "POST",
+                url: '<%= Page.ResolveUrl("~/Model/Concesion/ListConcesion.aspx/ValidaTotalConcesion")%>',
+                data: JSON.stringify(obj),
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: function (data) {
+                    //console.log('resultado: ' + data.d);
+                    if (data.d == 0) {
+                        $("#<%= txtCodigo.ClientID %>").focus();
+                        $("#<%= mensaje.ClientID %>").css('display', 'none');
+                        ClearFormConcesion();
+                        PopUpNewConcesion.Show();
+                    } else {
+                        $("#<%= lblErrorValidacion.ClientID %>").text("Ya se ingresarón el total permitido de concesiones.");
+                        $("#<%= mensajeValidacion.ClientID %>").addClass("alert alert-info fade in");
+                        $("#<%= mensajeValidacion.ClientID %>").css('display', 'block');
+                    }
+                    
+                },
+                error: function() {
+                    $("#<%= lblErrorValidacion.ClientID %>").text("Error al cargar los datos, favor contactarse con el administrador.");
+                    $("#<%= mensajeValidacion.ClientID %>").addClass("alert alert-danger fade in");
+                    $("#<%= mensajeValidacion.ClientID %>").css('display', 'block');
+                }
+            });
         });
 
         $('#btnCancelar').click(function () {
             PopUpNewConcesion.Hide();
-            gridConcesion.PerformCallback("databind");
+            //gridConcesion.PerformCallback("databind");
         });
 
         $('#btnGuardar').click(function () {
@@ -372,26 +386,51 @@
             var nombre = $("#<%= txtNombre.ClientID %>").val();
             var direccion = $("#<%= txtDireccion.ClientID %>").val();
             var superficie = $("#<%= txtSuperficie.ClientID %>").val();
-            var modulos = $("#<%= txtModulos.ClientID %>").val();
-            var lineas = $("#<%= txtLineas.ClientID %>").val();
             var idCliente = $("#<%= Hididuser.ClientID %>").val();
 
-            if (codigo == "" || nombre == "" || direccion == "" || superficie == "" || modulos == "" || lineas == "") {
+            if (codigo == "" || nombre == "" || direccion == "" || superficie == "") {
                 $("#<%= lblError.ClientID %>").text("Debe completar todos los campos para continuar.");
                 $("#<%= mensaje.ClientID %>").addClass("alert alert-danger fade in");
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
             } else {
-                var obj = { "codigo": codigo, "nombre": nombre, "direccion": direccion, "superficie": superficie, "modulos": modulos, "lineas": lineas, "idCliente": idCliente };
+
+                var objCliente = { "idCliente": idCliente };
 
                 $.ajax({
                     type: "POST",
-                    url: '<%= Page.ResolveUrl("~/Model/Concesion/ListConcesion.aspx/InsertaConcesion")%>',
-                    data: JSON.stringify(obj),
+                    url: '<%= Page.ResolveUrl("~/Model/Concesion/ListConcesion.aspx/ValidaTotalConcesion")%>',
+                    data: JSON.stringify(objCliente),
                     contentType: "application/json; charset=utf-8",
                     dataType: "json",
-                    success: OnSuccess,
-                    error: OnError
+                    success: function (data) {
+                        //console.log('resultado: ' + data.d);
+                        if (data.d == 0) {
+                            var obj = { "codigo": codigo, "nombre": nombre, "direccion": direccion, "superficie": superficie, "idCliente": idCliente };
+
+                            $.ajax({
+                                type: "POST",
+                                url: '<%= Page.ResolveUrl("~/Model/Concesion/ListConcesion.aspx/InsertaConcesion")%>',
+                                data: JSON.stringify(obj),
+                                contentType: "application/json; charset=utf-8",
+                                dataType: "json",
+                                success: OnSuccess,
+                                error: OnError
+                            });
+                            
+                        } else {
+                            $("#<%= lblError.ClientID %>").text("Ya se ingresarón el total permitido de concesiones.");
+                            $("#<%= mensaje.ClientID %>").addClass("alert alert-info fade in");
+                            $("#<%= mensaje.ClientID %>").css('display', 'block');
+                        }
+
+                    },
+                    error: function () {
+                        $("#<%= lblError.ClientID %>").text("Error al cargar los datos, favor contactarse con el administrador.");
+                        $("#<%= mensaje.ClientID %>").addClass("alert alert-danger fade in");
+                        $("#<%= mensaje.ClientID %>").css('display', 'block');
+                    }
                 });
+
             }
         });
 
@@ -403,6 +442,7 @@
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
                 $("#<%= mensaje.ClientID %>").fadeOut(5000);
                 ClearFormConcesion();
+                gridConcesion.PerformCallback("databind");
             } else {
                 $("#<%= lblError.ClientID %>").text("Error al ingresar los datos, intente más tarde.");
                 $("#<%= mensaje.ClientID %>").addClass("alert alert-danger fade in");
@@ -422,8 +462,6 @@
             $("#<%= txtNombre.ClientID %>").val('');
             $("#<%= txtDireccion.ClientID %>").val('');
             $("#<%= txtSuperficie.ClientID %>").val('');
-            $("#<%= txtModulos.ClientID %>").val('');
-            $("#<%= txtLineas.ClientID %>").val('');
         }
 
         function AgregaCoordenada(id) {
@@ -438,7 +476,7 @@
 
         $('#btnCancelarCoordenada').click(function () {
             PopUpCoordenadas.Hide();
-            gridCoordenadas.PerformCallback("databind");
+            //gridCoordenadas.PerformCallback("databind");
         });
 
         $('#btnGuardarCoordenada').click(function () {
@@ -494,7 +532,7 @@
             $("#<%= txtUtmX.ClientID %>").val('');
             $("#<%= txtUtmY.ClientID %>").val('');
         }
-       
+
     </script>
     
 </asp:Content>

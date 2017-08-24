@@ -130,7 +130,7 @@
                                         <label class="label-text">Coordenadas UTM E Inicio</label>
                                     </td>
                                     <td class="pcmCellText">
-                                        <input type="text" name="txtUtmEInicio" ID="txtUtmEInicio" runat="server" class="input-text" required/>
+                                        <input type="text" name="txtUtmEInicio" ID="txtUtmEInicio" runat="server" class="input-text" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" required/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
@@ -139,7 +139,7 @@
                                         <label class="label-text">Coordenadas UTM E Fin</label>
                                     </td>
                                     <td class="pcmCellText">
-                                        <input type="text" name="txtUtmEFin" ID="txtUtmEFin" runat="server" class="input-text" required/>
+                                        <input type="text" name="txtUtmEFin" ID="txtUtmEFin" runat="server" class="input-text" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" required/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
@@ -148,7 +148,7 @@
                                         <label class="label-text">Coordenadas UTM N Inicio</label>
                                     </td>
                                     <td class="pcmCellText">
-                                        <input type="text" name="txtUtmNInicio" ID="txtUtmNInicio" runat="server" class="input-text" required/>
+                                        <input type="text" name="txtUtmNInicio" ID="txtUtmNInicio" runat="server" class="input-text" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" required/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
@@ -157,7 +157,7 @@
                                         <label class="label-text">Coordenadas UTM N Fin</label>
                                     </td>
                                     <td class="pcmCellText">
-                                        <input type="text" name="txtUtmNFin" ID="txtUtmNFin" runat="server" class="input-text" required/>
+                                        <input type="text" name="txtUtmNFin" ID="txtUtmNFin" runat="server" class="input-text" onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" required/>
                                         <span class="color-red">*</span>
                                     </td>
                                 </tr>
@@ -226,15 +226,27 @@
                 </dx:GridViewDataComboBoxColumn>
                 <dx:GridViewDataTextColumn FieldName="Coordenada_E_Inicio" VisibleIndex="8" Caption="Coordenada E Inicio">
                     <HeaderStyle Font-Bold="True" />
+                    <EditItemTemplate>
+                         <input type="text" name="Coordenada_E_Inicio" ID="Coordenada_E_Inicio" runat="server" value='<%# Bind("Coordenada_E_Inicio") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                    </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Coordenada_E_Fin" VisibleIndex="9" Caption="Coordenada E Fin">
                     <HeaderStyle Font-Bold="True" />
+                    <EditItemTemplate>
+                         <input type="text" name="Coordenada_E_Fin" ID="Coordenada_E_Fin" runat="server" width="auto" value='<%# Bind("Coordenada_E_Fin") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                    </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Coordenada_N_Inicio" VisibleIndex="10" Caption="Coordenada N Inicio">
                     <HeaderStyle Font-Bold="True" />
+                    <EditItemTemplate>
+                         <input type="text" name="Coordenada_N_Inicio" ID="Coordenada_N_Inicio" runat="server" value='<%# Bind("Coordenada_N_Inicio") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                    </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
                 <dx:GridViewDataTextColumn FieldName="Coordenada_N_Fin" VisibleIndex="11" Caption="Coordenada N Fin">
                     <HeaderStyle Font-Bold="True" />
+                     <EditItemTemplate>
+                         <input type="text" name="Coordenada_N_Fin" ID="Coordenada_N_Fin" runat="server" value='<%# Bind("Coordenada_N_Fin") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                    </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
             
             </Columns>

@@ -130,6 +130,24 @@ namespace FPGeoreferencia.Model.Configuracion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtCorreo;
         
         /// <summary>
+        /// Control txtTotalConcesiones.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTotalConcesiones;
+        
+        /// <summary>
+        /// Control txtTotalModulos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtTotalModulos;
+        
+        /// <summary>
         /// Control SqlUsuario.
         /// </summary>
         /// <remarks>

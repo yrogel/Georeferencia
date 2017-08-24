@@ -20,24 +20,16 @@ namespace FPGeoreferencia.Model.Modulo
             if (!IsPostBack)
             {
                 var concesion = BusinessData.Dalc.Concesion.ObtenerCentroCultivo(1, decimal.Parse(idCentroCultivo));
-
-                ddlEspecie.DataSource = BusinessData.Dalc.Especie.ObtenerEspecie();
-                ddlEspecie.DataTextField = "Nombre";
-                ddlEspecie.DataValueField = "Id";
-                ddlEspecie.DataBind();
-                ddlEspecie.Items.Insert(0, new ListItem("Seleccione", "0"));
             }
         }
 
         [WebMethod]
-        public static string InsertaModulo(string nombre, string cantidadLineas, string largoLinea, string largoCuelga, string especie, string utmEInicio, string utmEFin, string utmNInicio, string utmNFin, string idCentroCultivo)
+        public static string InsertaModulo(string nombre, string idCentroCultivo)
         {
             try
             {
                 decimal estado;
-                if (BusinessData.Dalc.Modulo.CreaModulo(int.Parse(idCentroCultivo), int.Parse(especie), nombre,
-                    int.Parse(cantidadLineas), largoLinea, decimal.Parse(largoCuelga), utmEInicio, utmEFin, utmNInicio,
-                    utmNFin, out estado))
+                if (BusinessData.Dalc.Modulo.CreaModulo(int.Parse(idCentroCultivo), nombre, out estado))
                 {
                     if (estado == 0)
                         return "0";
@@ -54,7 +46,29 @@ namespace FPGeoreferencia.Model.Modulo
             }
         }
 
+        [WebMethod]
+        public static string InsertaCoordenadas(string modulo, string utmX, string utmY)
+        {
+            try
+            {
+                //se crean las coordenadas del centro cultivo
+                if (BusinessData.Dalc.Modulo.CreaCoordenadas(modulo, utmX, utmY))
+                    return "0";
+                return "1";
+            }
+            catch (Exception exception)
+            {
+                BusinessData.Dalc.Log.InsLog("ListConcesion", "InsertaCoordenadas", exception.Message);
+                return exception.Message;
+            }
+        }
+
         protected void GrillasCustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            (sender as ASPxGridView).DataBind();
+        }
+
+        protected void GrillasCoordenadaCustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
         {
             (sender as ASPxGridView).DataBind();
         }

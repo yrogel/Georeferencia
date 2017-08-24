@@ -18,4 +18,22 @@ namespace FPGeoreferencia.BusinessData.Entities
             Id = 0;
         }
     }
+
+    public class CoordenadasLinea
+    {
+        public int Id { get; set; }
+        public string UtmEInicio { get; set; }
+        public string UtmEFin { get; set; }
+        public string UtmNInicio { get; set; }
+        public string UtmNFin { get; set; }
+
+        public CoordenadasLinea()
+        {
+            UtmEInicio = null;
+            UtmEFin = null;
+            UtmNInicio = null;
+            UtmNFin = null;
+            Id = 0;
+        }
+    }
 }

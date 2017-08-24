@@ -42,6 +42,8 @@ namespace FPGeoreferencia.BusinessData.Dalc
                             cliente.CambioClave = (int)dataReader["Cambio_Clave"];
                         if (!(dataReader["Correo"] is DBNull) && (dataReader["Correo"] != null))
                             cliente.Correo = (string)dataReader["Correo"];
+                        if (!(dataReader["Total_Centro_Cultivo"] is DBNull) && (dataReader["Total_Centro_Cultivo"] != null))
+                            cliente.TotalCentroCultivo = (int)dataReader["Total_Centro_Cultivo"];
                         cliente.Login = login;
                         cliente.Password = password;
                     }

@@ -19,6 +19,7 @@ namespace FPGeoreferencia.BusinessData.Entities
         public int Estado { get; set; }
         public int CambioClave { get; set; }
         public string Correo { get; set; }
+        public int TotalCentroCultivo { get; set; }
 
         public Cliente()
         {
@@ -33,6 +34,7 @@ namespace FPGeoreferencia.BusinessData.Entities
             Estado = 0;
             CambioClave = 0;
             Correo = null;
+            TotalCentroCultivo = 0;
         }
     }
 }

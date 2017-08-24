@@ -9,7 +9,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
 {
     public class Usuario
     {
-        public static string CreaUsuario(string login, string password, string rol, string nombre, string rut, string direccion, string telefono, string correo)
+        public static string CreaUsuario(string login, string password, string rol, string nombre, string rut, string direccion, string telefono, string correo, string totalConseciones, string totalModulos)
         {
             try
             {
@@ -23,6 +23,8 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 database.AddInParameter(cmd, "direccion", DbType.String, direccion);
                 database.AddInParameter(cmd, "telefono", DbType.String, telefono);
                 database.AddInParameter(cmd, "correo", DbType.String, correo);
+                database.AddInParameter(cmd, "totalConseciones", DbType.Int32, totalConseciones);
+                database.AddInParameter(cmd, "totalModulos", DbType.Int32, totalModulos);
                 database.ExecuteNonQuery(cmd);
 
                 return "0";

@@ -10,7 +10,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
 {
     public class Concesion
     {
-        public static bool CreaCentroCultivo(int codigo, string nombre, string direccion, string superficie, int modulos, int lineas, decimal idCliente)
+        public static bool CreaCentroCultivo(int codigo, string nombre, string direccion, string superficie, decimal idCliente)
         {
             try
             {
@@ -21,8 +21,6 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 database.AddInParameter(cmd, "nombre", DbType.String, nombre);
                 database.AddInParameter(cmd, "direccion", DbType.String, direccion);
                 database.AddInParameter(cmd, "superficie", DbType.String, superficie);
-                database.AddInParameter(cmd, "modulos", DbType.Int32, modulos);
-                database.AddInParameter(cmd, "lineas", DbType.Int32, lineas);
                 object resultado = database.ExecuteScalar(cmd);
                 
                 return resultado.ToString() == "0";
@@ -125,6 +123,26 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 Log.InsLog("Concesion", "ObtenerCoordenadas", exception.Message);
             }
             return listCoordenadas;
+        }
+
+        public static bool ValidaTotalConcesion(string idCliente)
+        {
+            try
+            {
+                var database = DatabaseFactory.CreateDatabase();
+                var cmd = database.GetStoredProcCommand("ValidaTotalConcesion");
+                database.AddInParameter(cmd, "idCliente", DbType.Decimal, idCliente);
+
+                object resultado = database.ExecuteScalar(cmd);
+
+                return resultado.ToString() == "1";
+            }
+            catch (Exception exception)
+            {
+                //insertar log de error
+                Log.InsLog("Concesion", "ValidaTotalConcesion", exception.Message);
+                return false;
+            }
         }
     }
 }

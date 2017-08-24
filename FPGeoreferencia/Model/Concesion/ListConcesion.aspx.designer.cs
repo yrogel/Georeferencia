@@ -58,6 +58,24 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.WebControls.Label LblDireccion;
         
         /// <summary>
+        /// Control mensajeValidacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mensajeValidacion;
+        
+        /// <summary>
+        /// Control lblErrorValidacion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorValidacion;
+        
+        /// <summary>
         /// Control PopUpNewConcesion.
         /// </summary>
         /// <remarks>
@@ -128,24 +146,6 @@ namespace FPGeoreferencia.Model.Concesion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtSuperficie;
-        
-        /// <summary>
-        /// Control txtModulos.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtModulos;
-        
-        /// <summary>
-        /// Control txtLineas.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtLineas;
         
         /// <summary>
         /// Control gridConcesion.

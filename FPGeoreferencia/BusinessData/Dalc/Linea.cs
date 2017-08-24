@@ -146,5 +146,41 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 return "1";
             }
         }
+
+        public static List<Entities.CoordenadasLinea> ObtenerCoordenadas(string idCentroCultivo)
+        {
+            var listCoordenadas = new List<Entities.CoordenadasLinea>();
+            try
+            {
+                var database = DatabaseFactory.CreateDatabase();
+                var cmd = database.GetStoredProcCommand("GetCoordenadasLineas");
+                database.AddInParameter(cmd, "id_concesion", DbType.Decimal, idCentroCultivo);
+
+                using (var dataReader = database.ExecuteReader(cmd))
+                {
+                    while (dataReader.Read())
+                    {
+                        var coordenada = new Entities.CoordenadasLinea();
+                        if (!(dataReader["Id"] is DBNull) && (dataReader["Id"] != null))
+                            coordenada.Id = int.Parse(dataReader["Id"].ToString());
+                        if (!(dataReader["Coordenada_E_Inicio"] is DBNull) && (dataReader["Coordenada_E_Inicio"] != null))
+                            coordenada.UtmEInicio = (string)dataReader["Coordenada_E_Inicio"];
+                        if (!(dataReader["Coordenada_E_Fin"] is DBNull) && (dataReader["Coordenada_E_Fin"] != null))
+                            coordenada.UtmEFin = (string)dataReader["Coordenada_E_Fin"];
+                        if (!(dataReader["Coordenada_N_Inicio"] is DBNull) && (dataReader["Coordenada_N_Inicio"] != null))
+                            coordenada.UtmNInicio = (string)dataReader["Coordenada_N_Inicio"];
+                        if (!(dataReader["Coordenada_N_Fin"] is DBNull) && (dataReader["Coordenada_N_Fin"] != null))
+                            coordenada.UtmNFin = (string)dataReader["Coordenada_N_Fin"];
+                        listCoordenadas.Add(coordenada);
+                    }
+                }
+            }
+            catch (Exception exception)
+            {
+                //insertar log de error
+                Log.InsLog("Linea", "ObtenerCoordenadas", exception.Message);
+            }
+            return listCoordenadas;
+        }
     }
 }

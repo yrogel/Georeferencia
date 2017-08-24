@@ -43,12 +43,12 @@ namespace FPGeoreferencia.Model.Concesion
         }
 
         [WebMethod]
-        public static string InsertaConcesion(string codigo, string nombre, string direccion, string superficie, string modulos, string lineas, string idCliente)
+        public static string InsertaConcesion(string codigo, string nombre, string direccion, string superficie, string idCliente)
         {
             try
             {
                 //se crear el centro de cultivo
-                if (BusinessData.Dalc.Concesion.CreaCentroCultivo(int.Parse(codigo), nombre, direccion, superficie, int.Parse(modulos), int.Parse(lineas), decimal.Parse(idCliente)))
+                if (BusinessData.Dalc.Concesion.CreaCentroCultivo(int.Parse(codigo), nombre, direccion, superficie, decimal.Parse(idCliente)))
                     return "0";
                 return "1";
             }
@@ -72,6 +72,23 @@ namespace FPGeoreferencia.Model.Concesion
             catch (Exception exception)
             {
                 BusinessData.Dalc.Log.InsLog("ListConcesion", "InsertaCoordenadas", exception.Message);
+                return exception.Message;
+            }
+        }
+
+        [WebMethod]
+        public static string ValidaTotalConcesion(string idCliente)
+        {
+            try
+            {
+                //se valida la cantidad de concesiones que el cliente puede crear
+                if (BusinessData.Dalc.Concesion.ValidaTotalConcesion(idCliente))
+                    return "0";
+                return "1";
+            }
+            catch (Exception exception)
+            {
+                BusinessData.Dalc.Log.InsLog("ListConcesion", "InsertaConcesion", exception.Message);
                 return exception.Message;
             }
         }

@@ -29,11 +29,11 @@ namespace FPGeoreferencia.Model.Configuracion
         }
 
         [WebMethod]
-        public static string InsertaUsuario(string login, string password, string rol, string nombre, string rut, string direccion, string telefono, string correo)
+        public static string InsertaUsuario(string login, string password, string rol, string nombre, string rut, string direccion, string telefono, string correo, string totalConcesiones, string totalModulos)
         {
             try
             {
-                if (BusinessData.Dalc.Usuario.CreaUsuario(login, password, rol, nombre, rut, direccion, telefono, correo) == "0")
+                if (BusinessData.Dalc.Usuario.CreaUsuario(login, password, rol, nombre, rut, direccion, telefono, correo, totalConcesiones, totalModulos) == "0")
                     return "0";
                 return "1";
             }

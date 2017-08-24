@@ -155,5 +155,20 @@ namespace FPGeoreferencia.Model.Concesion
                 return exception.Message;
             }
         }
+
+        [WebMethod]
+        [ScriptMethod(ResponseFormat = ResponseFormat.Json)]
+        public static string ObtenerCoordenadasLineas(string id)
+        {
+            try
+            {
+                List<BusinessData.Entities.CoordenadasLinea> coordenadas = BusinessData.Dalc.Linea.ObtenerCoordenadas(id);
+                return new JavaScriptSerializer().Serialize(coordenadas);
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+        }
     }
 }
