@@ -238,6 +238,60 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlUbicacionCuelga;
         
         /// <summary>
+        /// Control txtCoordenadasMuestreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCoordenadasMuestreo;
+        
+        /// <summary>
+        /// Control PopUpEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl PopUpEspecie;
+        
+        /// <summary>
+        /// Control ASPxPanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
+        
+        /// <summary>
+        /// Control mensajeEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mensajeEspecie;
+        
+        /// <summary>
+        /// Control lblErrorEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorEspecie;
+        
+        /// <summary>
+        /// Control txtMuestreo.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtMuestreo;
+        
+        /// <summary>
         /// Control ddlEspecie.
         /// </summary>
         /// <remarks>
@@ -256,13 +310,13 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlUnidadMedida;
         
         /// <summary>
-        /// Control txtCoordenadasMuestreo.
+        /// Control gridEspecies.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCoordenadasMuestreo;
+        protected global::DevExpress.Web.ASPxGridView gridEspecies;
         
         /// <summary>
         /// Control SqlMuestreo.
@@ -274,6 +328,15 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.WebControls.SqlDataSource SqlMuestreo;
         
         /// <summary>
+        /// Control SqlEspecies.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlEspecies;
+        
+        /// <summary>
         /// Control SqlUbicacionCuelga.
         /// </summary>
         /// <remarks>
@@ -281,5 +344,14 @@ namespace FPGeoreferencia.Model.Concesion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlUbicacionCuelga;
+        
+        /// <summary>
+        /// Control SqlDataEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataEspecie;
     }
 }

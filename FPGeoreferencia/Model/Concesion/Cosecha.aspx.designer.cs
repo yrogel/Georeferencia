@@ -229,6 +229,60 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.HtmlControls.HtmlInputText txtNumeroIndividuoKg;
         
         /// <summary>
+        /// Control txtFechaCosecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxDateEdit txtFechaCosecha;
+        
+        /// <summary>
+        /// Control PopUpEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPopupControl PopUpEspecie;
+        
+        /// <summary>
+        /// Control ASPxPanel1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::DevExpress.Web.ASPxPanel ASPxPanel1;
+        
+        /// <summary>
+        /// Control mensajeEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl mensajeEspecie;
+        
+        /// <summary>
+        /// Control lblErrorEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblErrorEspecie;
+        
+        /// <summary>
+        /// Control txtCosecha.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlInputText txtCosecha;
+        
+        /// <summary>
         /// Control ddlEspecie.
         /// </summary>
         /// <remarks>
@@ -247,13 +301,13 @@ namespace FPGeoreferencia.Model.Concesion {
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlUnidadMedida;
         
         /// <summary>
-        /// Control txtFechaCosecha.
+        /// Control gridEspecies.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::DevExpress.Web.ASPxDateEdit txtFechaCosecha;
+        protected global::DevExpress.Web.ASPxGridView gridEspecies;
         
         /// <summary>
         /// Control SqlCosecha.
@@ -263,6 +317,15 @@ namespace FPGeoreferencia.Model.Concesion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlCosecha;
+        
+        /// <summary>
+        /// Control SqlEspecies.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlEspecies;
         
         /// <summary>
         /// Control SqlTipoCosecha.
@@ -281,5 +344,14 @@ namespace FPGeoreferencia.Model.Concesion {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlFormaCosecha;
+        
+        /// <summary>
+        /// Control SqlDataEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataEspecie;
     }
 }

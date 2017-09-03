@@ -9,7 +9,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
 {
     public class Linea
     {
-        public static bool CreaLinea(string nombre, string idModulo, string metros, string totalCuelgas, string largoCuelga, string utmEInicio, string utmEFin, string utmNInicio, string utmNFin, string tipoLinea, string tipoCuelga, out decimal estado)
+        public static bool CreaLinea(string nombre, string idModulo, string metros, string totalCuelgas, string largoCuelga, string utmEInicio, string utmEFin, string utmNInicio, string utmNFin, string tipoLinea, string tipoCuelga, string especie, out decimal estado)
         {
             try
             {
@@ -26,6 +26,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 database.AddInParameter(cmd, "utmNFin", DbType.String, utmNFin);
                 database.AddInParameter(cmd, "tipoLinea", DbType.Decimal, tipoLinea);
                 database.AddInParameter(cmd, "tipoCuelga", DbType.Decimal, tipoCuelga);
+                database.AddInParameter(cmd, "especie", DbType.Decimal, especie);
                 database.AddOutParameter(cmd, "estado", DbType.Decimal, 9);
                 database.ExecuteNonQuery(cmd);
 

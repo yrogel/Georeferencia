@@ -41,17 +41,23 @@ namespace FPGeoreferencia.Model.Linea
                 ddlTipoCuelga.DataValueField = "Id";
                 ddlTipoCuelga.DataBind();
                 ddlTipoCuelga.Items.Insert(0, new ListItem("Seleccione", "0"));
+
+                ddlEspecie.DataSource = BusinessData.Dalc.Especie.ObtenerEspecie();
+                ddlEspecie.DataTextField = "Nombre";
+                ddlEspecie.DataValueField = "Id";
+                ddlEspecie.DataBind();
+                ddlEspecie.Items.Insert(0, new ListItem("Seleccione", "0"));
                 
             }
         }
 
         [WebMethod]
-        public static string InsertaLinea(string modulo, string nombre, string metros, string tipoLinea, string totalCuelgas, string largoCuelga, string tipoCuelga, string utmEInicio, string utmEFin, string utmNInicio, string utmNFin, string idCentroCultivo)
+        public static string InsertaLinea(string modulo, string nombre, string metros, string tipoLinea, string totalCuelgas, string largoCuelga, string tipoCuelga, string utmEInicio, string utmEFin, string utmNInicio, string utmNFin, string idCentroCultivo, string especie)
         {
             try
             {
                 decimal estado;
-                if (BusinessData.Dalc.Linea.CreaLinea(nombre,modulo,metros,totalCuelgas,largoCuelga,utmEInicio,utmEFin,utmNInicio,utmNFin,tipoLinea,tipoCuelga, out estado))
+                if (BusinessData.Dalc.Linea.CreaLinea(nombre,modulo,metros,totalCuelgas,largoCuelga,utmEInicio,utmEFin,utmNInicio,utmNFin,tipoLinea,tipoCuelga, especie,out estado))
                 {
                     if (estado == 0)
                         return "0";

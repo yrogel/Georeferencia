@@ -9,7 +9,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
 {
     public class Cosecha
     {
-        public static string CreaOActualizaCosecha(string linea, string tipoCosecha, string formaCosecha, string kgSucioMetro, string kgSucioCuelga, string kgLimpioMetro, string kgLimpioCuelga, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string factorCondicion, string especie, string fecha, string unidadMedida, string idCosecha)
+        public static string CreaOActualizaCosecha(string linea, string tipoCosecha, string formaCosecha, string kgSucioMetro, string kgSucioCuelga, string kgLimpioMetro, string kgLimpioCuelga, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string factorCondicion, string fecha, string idCosecha)
         {
             try
             {
@@ -27,8 +27,6 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 database.AddInParameter(cmd, "tallaPromedio", DbType.Decimal, tallaPromedio);
                 database.AddInParameter(cmd, "factorCondicion", DbType.String, factorCondicion);
                 database.AddInParameter(cmd, "fecha", DbType.Date, fecha);
-                database.AddInParameter(cmd, "unidadMedida", DbType.String, unidadMedida);
-                database.AddInParameter(cmd, "especie", DbType.Decimal, especie);
                 database.AddInParameter(cmd, "idCosecha", DbType.Decimal, idCosecha);
                 database.ExecuteNonQuery(cmd);
 
@@ -84,10 +82,6 @@ namespace FPGeoreferencia.BusinessData.Dalc
                             cosecha.NumeroIndividuosMt = decimal.Parse(dataReader["Numero_Individuos_Mt"].ToString());
                         if (!(dataReader["Id_Modulo"] is DBNull) && (dataReader["Id_Modulo"] != null))
                             cosecha.IdModulo = decimal.Parse(dataReader["Id_Modulo"].ToString());
-                        if (!(dataReader["Id_Especie"] is DBNull) && (dataReader["Id_Especie"] != null))
-                            cosecha.IdEspecie = decimal.Parse(dataReader["Id_Especie"].ToString());
-                        if (!(dataReader["Unidad_Medida"] is DBNull) && (dataReader["Unidad_Medida"] != null))
-                            cosecha.UnidadMedida = dataReader["Unidad_Medida"].ToString();
                     }
                 }
                 return cosecha;

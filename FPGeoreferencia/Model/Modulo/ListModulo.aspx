@@ -118,11 +118,15 @@
             
             </Columns>
             <SettingsText EmptyDataRow="No existen datos"></SettingsText>
-            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" ></SettingsText>
+            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
             <SettingsPager PageSize="20"  />
             <Settings ShowTitlePanel="true" />
             <SettingsText Title="Módulos" />
             <Settings ShowFilterRow="True" ShowFooter="True" />
+            <SettingsBehavior AllowSelectByRowClick="true" />
+            <Styles>
+                <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+            </Styles>
         </dx:ASPxGridView>
 
     
@@ -239,6 +243,10 @@
                                 <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
                                 <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
                                 <SettingsText CommandDelete="Eliminar" />
+                                <SettingsBehavior AllowSelectByRowClick="true" />
+                                <Styles>
+                                    <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+                                </Styles>
                             </dx:ASPxGridView>
                            
                         </dx:PanelContent>

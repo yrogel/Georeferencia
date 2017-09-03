@@ -107,58 +107,72 @@
                 </UpdateButton>
             </dx:GridViewCommandColumn>
             
-            <dx:GridViewDataTextColumn FieldName="Id" Caption="Id" Visible="False" VisibleIndex="2">
+            <dx:GridViewDataTextColumn FieldName="Id" VisibleIndex="2" Caption="Fauna Acompañante">
+                <HeaderStyle Font-Bold="True" />
+                <CellStyle HorizontalAlign="Center"/>
+                <EditFormSettings Visible="False" />
+                <DataItemTemplate>
+                    <button class="btn btn-info btn-xs" data-toggle="modal" onclick='AgregaEspecie(<%#Eval("Id")%>)'><i class="icon-settings"></i> Agregar</button>
+                </DataItemTemplate>
+            </dx:GridViewDataTextColumn>
+            <dx:GridViewDataTextColumn FieldName="Id" Caption="Id" Visible="False" VisibleIndex="3">
                 <HeaderStyle Font-Bold="True" />
                 <EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="linea" VisibleIndex="3" Caption="Línea">
+            <dx:GridViewDataTextColumn FieldName="linea" VisibleIndex="4" Caption="Línea">
                 <HeaderStyle Font-Bold="True" />
                 <EditFormSettings Visible="False" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataColumn FieldName="Fecha_Muestreo" VisibleIndex="4" Caption="Fecha Muestreo">
+            <dx:GridViewDataColumn FieldName="Fecha_Muestreo" VisibleIndex="5" Caption="Fecha Muestreo">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataColumn>
-            <dx:GridViewDataTextColumn FieldName="Hora_Muestreo" VisibleIndex="5" Caption="Hora Muestreo">
+            <dx:GridViewDataTextColumn FieldName="Hora_Muestreo" VisibleIndex="6" Caption="Hora Muestreo">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Temperatura" VisibleIndex="6" Caption="Temperatura">
+            <dx:GridViewDataTextColumn FieldName="Temperatura" VisibleIndex="7" Caption="Temperatura">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Transparencia" VisibleIndex="7" Caption="Transparencia(m)">
+            <dx:GridViewDataTextColumn FieldName="Transparencia" VisibleIndex="8" Caption="Transparencia(m)">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Numero_Individuos_Mt" VisibleIndex="8" Caption="Número Individuos Mts">
+            <dx:GridViewDataTextColumn FieldName="Numero_Individuos_Mt" VisibleIndex="9" Caption="Número Individuos Mts">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Numero_Individuos_Kg" VisibleIndex="9" Caption="Número Individuos Kg">
+            <dx:GridViewDataTextColumn FieldName="Numero_Individuos_Kg" VisibleIndex="10" Caption="Número Individuos Kg">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataComboBoxColumn FieldName="Id_Ubicacion_Cuelga" VisibleIndex="10" Caption="Ubicación Cuelga">
+            <dx:GridViewDataComboBoxColumn FieldName="Id_Ubicacion_Cuelga" VisibleIndex="11" Caption="Ubicación Cuelga">
                 <HeaderStyle Font-Bold="True" />
                 <PropertiesComboBox DataSourceID="SqlUbicacionCuelga" ValueType="System.Int32"  ValueField="Id" TextField="Nombre" DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith">
                 </PropertiesComboBox>
             </dx:GridViewDataComboBoxColumn>
-            <dx:GridViewDataTextColumn FieldName="Talla_Promedio" VisibleIndex="11" Caption="Talla Promedio">
+            <dx:GridViewDataTextColumn FieldName="Talla_Promedio" VisibleIndex="12" Caption="Talla Promedio">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Numero_Muertos" VisibleIndex="12" Caption="Número Muertos">
+            <dx:GridViewDataTextColumn FieldName="Numero_Muertos" VisibleIndex="13" Caption="Número Muertos">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Factor_Condicion" VisibleIndex="13" Caption="Factor Condición">
+            <dx:GridViewDataTextColumn FieldName="Factor_Condicion" VisibleIndex="14" Caption="Factor Condición">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
-            <dx:GridViewDataTextColumn FieldName="Utm_E_N" VisibleIndex="14" Caption="Coordenadas Muestro UTM N - UTM E">
+            <dx:GridViewDataTextColumn FieldName="Utm_E_N" VisibleIndex="15" Caption="Coordenadas Muestro UTM N - UTM E">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataTextColumn>
             
         </Columns>
         <SettingsText EmptyDataRow="No existen datos"></SettingsText>
-        <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" ></SettingsText>
+        <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
         <SettingsPager PageSize="20"  />
         <Settings ShowTitlePanel="true" />
         <SettingsText Title="Muestreo" />
         <Settings ShowFilterRow="True" ShowFooter="True" />
         <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
+        <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
+        <SettingsText CommandDelete="Eliminar" />
+        <SettingsBehavior AllowSelectByRowClick="true" />
+        <Styles>
+            <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+        </Styles>
                     
     </dx:ASPxGridView>
     </div>
@@ -181,7 +195,7 @@
                                         
                             <table style="width: 100%;" >
                                 <tr>
-                                    <td rowspan="17">
+                                    <td rowspan="16">
                                         <div class="pcmSideSpacer">
                                         </div>
                                     </td>
@@ -193,7 +207,7 @@
                                         </select>
                                         <span class="color-red">*</span>
                                     </td>
-                                    <td rowspan="17">
+                                    <td rowspan="16">
                                         <div class="pcmSideSpacer">
                                         </div>
                                     </td>
@@ -303,22 +317,6 @@
                                 </tr>
                                 <tr>
                                     <td class="pcmCellCaption" >
-                                        <label class="label-text">Fauna acompañante</label>
-                                    </td>
-                                    <td class="pcmCellText">
-                                        <select ID="ddlEspecie" name="ddlEspecie" runat="server" class="input-text" style="width: 120px" required>
-                                        </select>
-                                        &nbsp;
-                                        <select ID="ddlUnidadMedida" name="ddlUnidadMedida" runat="server" class="input-text" style="width: 70px" required>
-                                            <option value="0">Unidad</option>
-                                            <option value="ind/kg">ind/kg</option>
-                                            <option value="ind/mts">ind/mts</option>
-                                        </select>
-                                        <span class="color-red">*</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="pcmCellCaption" >
                                         <label class="label-text">Coordenadas muestro UTM N - UTM E</label>
                                     </td>
                                     <td class="pcmCellText">
@@ -352,6 +350,134 @@
         </ContentCollection>
     </dx:ASPxPopupControl>
     
+    <dx:ASPxPopupControl ID="PopUpEspecie" runat="server" ShowCloseButton="False" CloseAction="CloseButton"
+        PopupHorizontalAlign="WindowCenter" AllowDragging="True" PopupVerticalAlign="WindowCenter" ClientInstanceName="PopUpEspecie"
+        HeaderText="Creación de Fauna Acompañante" Modal="True" PopupAnimationType="Fade" EnableViewState="True" Theme="DevEx" Width="500px">
+        <ModalBackgroundStyle BackColor="Black" Opacity="30" />
+        <SizeGripImage Width="11px" />
+        <ContentCollection>
+            <dx:PopupControlContentControl runat="server">
+                <dx:ASPxPanel ID="ASPxPanel1" runat="server" DefaultButton="btCreate">
+                    <PanelCollection>
+                        <dx:PanelContent runat="server">
+				            <h5>Ingrese toda la información (<span class="color-red">*</span>)</h5>
+
+                            <div runat="server" id="mensajeEspecie">
+                                <strong><asp:Label runat="server" ID="lblErrorEspecie" /></strong>
+				            </div>
+
+                            <table style="width: 100%;" >
+                                <tr>
+                                    <td rowspan="4">
+                                        <div class="pcmSideSpacer">
+                                        </div>
+                                    </td>
+                                    <td class="pcmCellCaption" >
+                                        <label class="label-text">Código Muestreo</label>
+                                    </td>
+                                    <td class="pcmCellText">
+                                        <input type="text" name="txtMuestreo" ID="txtMuestreo" class="input-text" runat="server" disabled />
+                                    </td>
+                                    <td rowspan="4">
+                                        <div class="pcmSideSpacer">
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pcmCellCaption" >
+                                        <label class="label-text">Especie</label></td>
+                                    <td class="pcmCellText">
+                                        <select ID="ddlEspecie" name="ddlEspecie" runat="server" class="input-text" required>
+                                        </select>
+                                        <span class="color-red">*</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pcmCellCaption" >
+                                        <label class="label-text">Unidad de Medida</label>
+                                    </td>
+                                    <td class="pcmCellText">
+                                        <select ID="ddlUnidadMedida" name="ddlUnidadMedida" runat="server" class="input-text" required>
+                                            <option value="0">Seleccione</option>
+                                            <option value="ind/kg">ind/kg</option>
+                                            <option value="ind/mts">ind/mts</option>
+                                        </select>
+                                        <span class="color-red">*</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>&nbsp;</td>
+                                    <td>
+                                        <div class="pcmButton">
+                                            <button class="btn-u" type="button" id="btnCancelarEspecie">Cancelar</button>
+                                            <input type="button" id="btnGuardarEspecie" name="btnGuardarEspecie" class="btn-u" value="Guardar"/>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </table>
+
+                            <div style="padding-bottom: 10px;"></div>
+
+                            <dx:ASPxGridView ID="gridEspecies" ClientInstanceName="gridEspecies" runat="server" DataSourceID="SqlEspecies" 
+                                 KeyFieldName="Id" AutoGenerateColumns="False" Width="100%" OnCustomCallback="GrillasEspeciesCustomCallback" EnableCallBacks="True">
+                                <Columns>
+                
+                                    <dx:GridViewCommandColumn VisibleIndex="0" ButtonType="Image" Caption="#" ShowEditButton="True" Width="60px">
+                                        <DeleteButton Visible="True">
+                                            <Image Url="~/Images/table_Delete.png" />  
+                                        </DeleteButton>
+                                        <EditButton Visible="True">
+                                            <Image Url="~/Images/table_edit.png" />  
+                                        </EditButton>
+                                        <CancelButton Visible="True">
+                                            <Image Url="~/Images/cancelar.png" />
+                                        </CancelButton>
+                                        <UpdateButton Visible="True">
+                                            <Image Url="~/Images/correcto.png" />
+                                        </UpdateButton>
+                                    </dx:GridViewCommandColumn>
+                
+                                    <dx:GridViewDataTextColumn FieldName="Id" Caption="Id" Visible="False" VisibleIndex="1">
+                                        <HeaderStyle Font-Bold="True" />
+                                        <EditFormSettings Visible="False" />
+                                    </dx:GridViewDataTextColumn>
+                                    <dx:GridViewDataComboBoxColumn FieldName="Id_Especie" VisibleIndex="2" Caption="Especie">
+                                        <HeaderStyle Font-Bold="True" />
+                                        <PropertiesComboBox DataSourceID="SqlDataEspecie" ValueType="System.Int32" ValueField="Id" TextField="Nombre" DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith" />
+                                    </dx:GridViewDataComboBoxColumn>
+                                    <dx:GridViewDataComboBoxColumn FieldName="Unidad_Medida" VisibleIndex="3" Caption="Unidad de Medida">
+                                        <HeaderStyle Font-Bold="True" />
+                                        <PropertiesComboBox ValueField="type"> 
+                                            <Items>
+                                                <dx:ListEditItem Text="ind/kg" Value="ind/kg" />
+                                                <dx:ListEditItem Text="ind/mts" Value="ind/mts" />
+                                            </Items> 
+                                        </PropertiesComboBox> 
+                                        
+                                    </dx:GridViewDataComboBoxColumn>
+            
+                                </Columns>
+                                <SettingsText EmptyDataRow="No existen datos"></SettingsText>
+                                <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
+                                <SettingsPager PageSize="5"  />
+                                <Settings ShowTitlePanel="true" />
+                                <SettingsText Title="Fauna Acompañante" />
+                                <Settings ShowFilterRow="True" ShowFooter="True" />
+                                <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
+                                <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
+                                <SettingsText CommandDelete="Eliminar" />
+                                <SettingsBehavior AllowSelectByRowClick="true" />
+                                <Styles>
+                                    <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+                                </Styles>
+                            </dx:ASPxGridView>
+                        </dx:PanelContent>
+                    </PanelCollection>
+                </dx:ASPxPanel>
+            </dx:PopupControlContentControl>
+        </ContentCollection>
+    </dx:ASPxPopupControl>
+    
     <asp:SqlDataSource ID="SqlMuestreo" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
             SelectCommand="GetMuestreo" SelectCommandType="StoredProcedure" DeleteCommand="DelMuestreo" DeleteCommandType="StoredProcedure">
         <SelectParameters>
@@ -363,8 +489,30 @@
         </DeleteParameters>
     </asp:SqlDataSource>
     
+    <asp:SqlDataSource ID="SqlEspecies" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
+        SelectCommand="GetFaunaAcompañante" SelectCommandType="StoredProcedure" UpdateCommand="UpdFaunaAcompañante" UpdateCommandType="StoredProcedure" DeleteCommand="DelFaunaAcompañante" DeleteCommandType="StoredProcedure">
+        <SelectParameters>
+            <asp:ControlParameter ControlID="HidIdMuestreo" Name="Id_Muestreo" PropertyName="Value" Type="Decimal" />
+            <asp:Parameter Name="tipo" Type="String" DefaultValue="M" />
+        </SelectParameters>
+        <UpdateParameters>
+            <asp:Parameter Name="Id" Type="Decimal" />
+            <asp:Parameter Name="Id_Especie" Type="Decimal" />
+            <asp:Parameter Name="Unidad_Medida" Type="String" />
+            <asp:Parameter Name="tipo" Type="String" DefaultValue="M" />
+        </UpdateParameters>
+        <DeleteParameters>
+            <asp:Parameter Name="Id" Type="Decimal"/>
+            <asp:Parameter Name="tipo" Type="String" DefaultValue="M" />
+        </DeleteParameters>
+    </asp:SqlDataSource>
+    
     <asp:SqlDataSource ID="SqlUbicacionCuelga" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
         SelectCommand="GetUbicacionCuelga" SelectCommandType="StoredProcedure">
+    </asp:SqlDataSource>
+    
+     <asp:SqlDataSource ID="SqlDataEspecie" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
+        SelectCommand="GetEspecie" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
     
     <script>
@@ -460,8 +608,6 @@
             $("#<%= ddlUbicacionCuelga.ClientID %>").val(muestreo["IdUbicacionCuelga"]);
             $("#<%= txtCoordenadasMuestreo.ClientID %>").val(muestreo["UtmEn"]);
             txtFechaMuestreo.SetText(muestreo["FechaMuestreo"]);
-            $("#<%= ddlEspecie.ClientID %>").val(muestreo["IdEspecie"]);
-            $("#<%= ddlUnidadMedida.ClientID %>").val(muestreo["UnidadMedida"]);
             ChargeLineaByModulo(muestreo["IdLinea"]);
             $('#btnGuardar').css('display', 'none');
             $('#btnActualizar').css('display', 'inline-block');
@@ -491,20 +637,18 @@
             var numeroMuertosMts = $("#<%= txtNumeroMuertosMts.ClientID %>").val();
             var factorCondicion = $("#<%= txtFactorCondicion.ClientID %>").val();
             var ubicacionCuelga = $("#<%= ddlUbicacionCuelga.ClientID %>").val();
-            var especie = $("#<%= ddlEspecie.ClientID %>").val();
             var coordenadasMuestreo = $("#<%= txtCoordenadasMuestreo.ClientID %>").val();
             var fecha = txtFechaMuestreo.GetText();
-            var unidadMedida = $("#<%= ddlUnidadMedida.ClientID %>").val();
             var idMuestreo = $("#<%= HidIdMuestreo.ClientID %>").val();
             //var fecha = txtFechaSiembra.GetDate();
             //alert(fecha);
 
-            if (modulo == 0 || linea == 0 || hora == "" || minutos == "" || temperatura == "" || transparencia == "" || numeroIndividuoMts == "" || numeroIndividuoKg == "" || tallaPromedio == "" || numeroMuertosMts == "" || factorCondicion == "" || ubicacionCuelga == "0" || especie == "0" || coordenadasMuestreo == "" || fecha == "" || unidadMedida == "0") {
+            if (modulo == 0 || linea == 0 || hora == "" || minutos == "" || temperatura == "" || transparencia == "" || numeroIndividuoMts == "" || numeroIndividuoKg == "" || tallaPromedio == "" || numeroMuertosMts == "" || factorCondicion == "" || ubicacionCuelga == "0" || coordenadasMuestreo == "" || fecha == "") {
                 $("#<%= lblError.ClientID %>").text("Debe completar todos los campos para continuar.");
                 $("#<%= mensaje.ClientID %>").addClass("alert alert-danger fade in");
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
             } else {
-                var obj = { "modulo": modulo, "linea": linea, "hora": hora, "minutos": minutos, "temperatura": temperatura, "transparencia": transparencia, "numeroIndividuoMts": numeroIndividuoMts, "numeroIndividuoKg": numeroIndividuoKg, "tallaPromedio": tallaPromedio, "numeroMuertosMts": numeroMuertosMts, "factorCondicion": factorCondicion, "ubicacionCuelga": ubicacionCuelga, "especie": especie, "coordenadasMuestreo": coordenadasMuestreo, "fecha": fecha, "unidadMedida": unidadMedida, "idMuestreo": idMuestreo };
+                var obj = { "modulo": modulo, "linea": linea, "hora": hora, "minutos": minutos, "temperatura": temperatura, "transparencia": transparencia, "numeroIndividuoMts": numeroIndividuoMts, "numeroIndividuoKg": numeroIndividuoKg, "tallaPromedio": tallaPromedio, "numeroMuertosMts": numeroMuertosMts, "factorCondicion": factorCondicion, "ubicacionCuelga": ubicacionCuelga, "coordenadasMuestreo": coordenadasMuestreo, "fecha": fecha, "idMuestreo": idMuestreo };
 
                 $.ajax({
                     type: "POST",
@@ -527,7 +671,7 @@
                 $("#<%= mensaje.ClientID %>").removeClass("alert alert-danger fade in").addClass("alert alert-success fade in");
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
                 $("#<%= mensaje.ClientID %>").fadeOut(5000);
-                if(idMuestreo == 0)
+                if (idMuestreo == 0) 
                     ClearFormMuestreo();
             } else {
                 $("#<%= lblError.ClientID %>").text("Error al ingresar los datos, intente más tarde.");
@@ -557,9 +701,76 @@
             $("#<%= txtNumeroMuertosMts.ClientID %>").val('');
             $("#<%= txtFactorCondicion.ClientID %>").val('');
             $("#<%= ddlUbicacionCuelga.ClientID %>").val('0');
-            $("#<%= ddlEspecie.ClientID %>").val('0');
             $("#<%= txtCoordenadasMuestreo.ClientID %>").val('');
             txtFechaMuestreo.GetInputElement().value = "";
+        }
+
+        function AgregaEspecie(id) {
+            //alert(id); 
+            $("#<%= HidIdMuestreo.ClientID %>").val(id);
+            $("#<%= txtMuestreo.ClientID %>").val(id);
+            $("#<%= mensajeEspecie.ClientID %>").css('display', 'none');
+            ClearFormEspecie();
+            gridEspecies.PerformCallback("databind");
+            PopUpEspecie.Show();
+        }
+
+        $('#btnCancelarEspecie').click(function () {
+            PopUpEspecie.Hide();
+            //gridEspecies.PerformCallback("databind");
+        });
+
+        $('#btnGuardarEspecie').click(function () {
+
+            var idMuestreo = $("#<%= txtMuestreo.ClientID %>").val();
+            var especie = $("#<%= ddlEspecie.ClientID %>").val();
+            var unidadMedida = $("#<%= ddlUnidadMedida.ClientID %>").val();
+
+
+            if (idMuestreo == "" || especie == 0 || unidadMedida == 0) {
+                $("#<%= lblErrorEspecie.ClientID %>").text("Debe completar todos los campos para continuar.");
+                $("#<%= mensajeEspecie.ClientID %>").addClass("alert alert-danger fade in");
+                $("#<%= mensajeEspecie.ClientID %>").css('display', 'block');
+            } else {
+                var obj = { "idMuestreo": idMuestreo, "especie": especie, "unidadMedida": unidadMedida };
+
+                $.ajax({
+                    type: "POST",
+                    url: '<%= Page.ResolveUrl("~/Model/Concesion/Muestreo.aspx/InsertaFaunaAcompañante")%>',
+                    data: JSON.stringify(obj),
+                    contentType: "application/json; charset=utf-8",
+                    dataType: "json",
+                    success: OnSuccessEspecie,
+                    error: OnErrorEspecie
+                });
+            }
+        });
+
+        function OnSuccessEspecie(msg) {
+            //alert(msg.d);
+            if (msg.d == 0) {
+                $("#<%= lblErrorEspecie.ClientID %>").text("Se ingreso correctamente los datos.");
+                $("#<%= mensajeEspecie.ClientID %>").removeClass("alert alert-danger fade in").addClass("alert alert-success fade in");
+                $("#<%= mensajeEspecie.ClientID %>").css('display', 'block');
+                $("#<%= mensajeEspecie.ClientID %>").fadeOut(5000);
+                gridEspecies.PerformCallback("databind");
+                ClearFormEspecie();
+            } else {
+                $("#<%= lblErrorEspecie.ClientID %>").text("Error al ingresar los datos, intente más tarde.");
+                $("#<%= mensajeEspecie.ClientID %>").addClass("alert alert-danger fade in");
+                $("#<%= mensajeEspecie.ClientID %>").css('display', 'block');
+            }
+        }
+
+        function OnErrorEspecie(msg) {
+            //alert('Error: ' + msg.responseText);
+            $("#<%= lblErrorEspecie.ClientID %>").text("Error al ingresar los datos, intente más tarde.");
+            $("#<%= mensajeEspecie.ClientID %>").addClass("alert alert-danger fade in");
+            $("#<%= mensajeEspecie.ClientID %>").css('display', 'block');
+        }
+
+        function ClearFormEspecie() {
+            $("#<%= ddlEspecie.ClientID %>").val('0');
             $("#<%= ddlUnidadMedida.ClientID %>").val('0');
         }
     

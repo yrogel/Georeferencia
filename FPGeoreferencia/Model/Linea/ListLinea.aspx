@@ -55,7 +55,7 @@
                             
                             <table style="width: 100%;" >
                                 <tr>
-                                    <td rowspan="12">
+                                    <td rowspan="13">
                                         <div class="pcmSideSpacer">
                                         </div>
                                     </td>
@@ -67,7 +67,7 @@
                                         </select>
                                         <span class="color-red">*</span>
                                     </td>
-                                    <td rowspan="12">
+                                    <td rowspan="13">
                                         <div class="pcmSideSpacer">
                                         </div>
                                     </td>
@@ -121,6 +121,15 @@
                                         <label class="label-text">Tipo Cuelga</label></td>
                                     <td class="pcmCellText">
                                         <select ID="ddlTipoCuelga" name="ddlTipoCuelga" runat="server" class="input-text" required>
+                                        </select>
+                                        <span class="color-red">*</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="pcmCellCaption" >
+                                        <label class="label-text">Especie</label></td>
+                                    <td class="pcmCellText">
+                                        <select ID="ddlEspecie" name="ddlEspecie" runat="server" class="input-text" required>
                                         </select>
                                         <span class="color-red">*</span>
                                     </td>
@@ -224,25 +233,29 @@
                     <HeaderStyle Font-Bold="True" />
                     <PropertiesComboBox DataSourceID="SqlDataCuelga" ValueType="System.Int32" ValueField="Id" TextField="Nombre" DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith" />
                 </dx:GridViewDataComboBoxColumn>
-                <dx:GridViewDataTextColumn FieldName="Coordenada_E_Inicio" VisibleIndex="8" Caption="Coordenada E Inicio">
+                <dx:GridViewDataComboBoxColumn FieldName="Id_Especie" VisibleIndex="8" Caption="Especie">
+                    <HeaderStyle Font-Bold="True" />
+                    <PropertiesComboBox DataSourceID="SqlDataEspecie" ValueType="System.Int32" ValueField="Id" TextField="Nombre" DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith" />
+                </dx:GridViewDataComboBoxColumn>
+                <dx:GridViewDataTextColumn FieldName="Coordenada_E_Inicio" VisibleIndex="9" Caption="Coordenada E Inicio">
                     <HeaderStyle Font-Bold="True" />
                     <EditItemTemplate>
                          <input type="text" name="Coordenada_E_Inicio" ID="Coordenada_E_Inicio" runat="server" value='<%# Bind("Coordenada_E_Inicio") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
                     </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Coordenada_E_Fin" VisibleIndex="9" Caption="Coordenada E Fin">
+                <dx:GridViewDataTextColumn FieldName="Coordenada_E_Fin" VisibleIndex="10" Caption="Coordenada E Fin">
                     <HeaderStyle Font-Bold="True" />
                     <EditItemTemplate>
                          <input type="text" name="Coordenada_E_Fin" ID="Coordenada_E_Fin" runat="server" width="auto" value='<%# Bind("Coordenada_E_Fin") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
                     </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Coordenada_N_Inicio" VisibleIndex="10" Caption="Coordenada N Inicio">
+                <dx:GridViewDataTextColumn FieldName="Coordenada_N_Inicio" VisibleIndex="11" Caption="Coordenada N Inicio">
                     <HeaderStyle Font-Bold="True" />
                     <EditItemTemplate>
                          <input type="text" name="Coordenada_N_Inicio" ID="Coordenada_N_Inicio" runat="server" value='<%# Bind("Coordenada_N_Inicio") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
                     </EditItemTemplate>
                 </dx:GridViewDataTextColumn>
-                <dx:GridViewDataTextColumn FieldName="Coordenada_N_Fin" VisibleIndex="11" Caption="Coordenada N Fin">
+                <dx:GridViewDataTextColumn FieldName="Coordenada_N_Fin" VisibleIndex="12" Caption="Coordenada N Fin">
                     <HeaderStyle Font-Bold="True" />
                      <EditItemTemplate>
                          <input type="text" name="Coordenada_N_Fin" ID="Coordenada_N_Fin" runat="server" value='<%# Bind("Coordenada_N_Fin") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
@@ -251,12 +264,18 @@
             
             </Columns>
             <SettingsText EmptyDataRow="No existen datos"></SettingsText>
-            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" ></SettingsText>
+            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
             <SettingsPager PageSize="20"  />
             <Settings ShowTitlePanel="true" />
             <SettingsText Title="Líneas" />
             <Settings ShowFilterRow="True" ShowFooter="True" />
             <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
+            <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
+            <SettingsText CommandDelete="Eliminar" />
+            <SettingsBehavior AllowSelectByRowClick="true" />
+            <Styles>
+                <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+            </Styles>
             
         </dx:ASPxGridView>
 
@@ -280,6 +299,7 @@
             <asp:Parameter Name="Coordenada_E_Fin" Type="String" />
             <asp:Parameter Name="Coordenada_N_Inicio" Type="String" />
             <asp:Parameter Name="Coordenada_N_Fin" Type="String" />
+            <asp:Parameter Name="Id_Especie" Type="Decimal" />
         </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32"/>
@@ -293,6 +313,10 @@
     <asp:SqlDataSource ID="SqlDataCuelga" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
         SelectCommand="GetTipoCuelga" SelectCommandType="StoredProcedure">
     </asp:SqlDataSource>
+    
+    <asp:SqlDataSource ID="SqlDataEspecie" runat="server" ConnectionString="<%$ ConnectionStrings:FPGeoreferencia%>" 
+        SelectCommand="GetEspecie" SelectCommandType="StoredProcedure">
+    </asp:SqlDataSource>
    
     <script>
 
@@ -304,7 +328,7 @@
 
         $('#btnCancelar').click(function () {
             PopUpNewLinea.Hide();
-            gridLineas.PerformCallback("databind");
+            //gridLineas.PerformCallback("databind");
         });
 
         $('#btnGuardar').click(function () {
@@ -320,15 +344,16 @@
             var utmEFin = $("#<%= txtUtmEFin.ClientID %>").val();
             var utmNInicio = $("#<%= txtUtmNInicio.ClientID %>").val();
             var utmNFin = $("#<%= txtUtmNFin.ClientID %>").val();
+            var especie = $("#<%= ddlEspecie.ClientID %>").val();
             var idCentroCultivo = $("#<%= HidIdCentroCultivo.ClientID %>").val();
 
 
-            if (modulo == 0 || nombre == "" || metros == "" || tipoLinea == 0 || totalCuelgas == "" || largoCuelga == "" || tipoCuelga == 0 || utmEInicio == "" || utmEFin == "" || utmNInicio == "" || utmNFin == "" || idCentroCultivo == "") {
+            if (modulo == 0 || nombre == "" || metros == "" || tipoLinea == 0 || totalCuelgas == "" || largoCuelga == "" || tipoCuelga == 0 || utmEInicio == "" || utmEFin == "" || utmNInicio == "" || utmNFin == "" || idCentroCultivo == "" || especie == 0) {
                 $("#<%= lblError.ClientID %>").text("Debe completar todos los campos para continuar.");
                 $("#<%= mensaje.ClientID %>").addClass("alert alert-danger fade in");
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
             } else {
-                var obj = { "modulo": modulo, "nombre": nombre, "metros": metros, "tipoLinea": tipoLinea, "totalCuelgas": totalCuelgas, "largoCuelga": largoCuelga, "tipoCuelga": tipoCuelga, "utmEInicio": utmEInicio, "utmEFin": utmEFin, "utmNInicio": utmNInicio, "utmNFin": utmNFin, "idCentroCultivo": idCentroCultivo };
+                var obj = { "modulo": modulo, "nombre": nombre, "metros": metros, "tipoLinea": tipoLinea, "totalCuelgas": totalCuelgas, "largoCuelga": largoCuelga, "tipoCuelga": tipoCuelga, "utmEInicio": utmEInicio, "utmEFin": utmEFin, "utmNInicio": utmNInicio, "utmNFin": utmNFin, "idCentroCultivo": idCentroCultivo, "especie":especie };
 
                 $.ajax({
                     type: "POST",
@@ -350,6 +375,7 @@
                 $("#<%= mensaje.ClientID %>").css('display', 'block');
                 $("#<%= mensaje.ClientID %>").fadeOut(5000);
                 ClearFormLinea();
+                gridLineas.PerformCallback("databind");
             } else {
                 if (msg.d == 1) {
                     $("#<%= lblError.ClientID %>").text("Error al ingresar los datos, se alcanzó el límite de líneas permitidas.");
@@ -383,6 +409,7 @@
             $("#<%= txtUtmEFin.ClientID %>").val('');
             $("#<%= txtUtmNInicio.ClientID %>").val('');
             $("#<%= txtUtmNFin.ClientID %>").val('');
+            $("#<%= ddlEspecie.ClientID %>").val('0');
         }
 
         $(document).ready(function () {

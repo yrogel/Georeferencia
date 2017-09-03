@@ -91,6 +91,10 @@
         <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
         <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
         <SettingsText CommandDelete="Eliminar" />
+        <SettingsBehavior AllowSelectByRowClick="true" />
+        <Styles>
+            <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+        </Styles>
                     
     </dx:ASPxGridView>
     

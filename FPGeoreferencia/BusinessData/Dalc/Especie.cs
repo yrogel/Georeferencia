@@ -44,5 +44,27 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 return null;
             }
         }
+
+        public static string InsertaFaunaAcompañante(string idTipo, string especie, string unidadMedida, string tipo)
+        {
+            try
+            {
+                var database = DatabaseFactory.CreateDatabase();
+                var cmd = database.GetStoredProcCommand("InsFaunaAcompañante");
+                database.AddInParameter(cmd, "idEspecie", DbType.Decimal, especie);
+                database.AddInParameter(cmd, "idTipo", DbType.Decimal, idTipo);
+                database.AddInParameter(cmd, "unidadMedida", DbType.String, unidadMedida);
+                database.AddInParameter(cmd, "tipo", DbType.String, tipo);
+                database.ExecuteNonQuery(cmd);
+
+                return "0";
+            }
+            catch (Exception exception)
+            {
+                //insertar log de error
+                Log.InsLog("Especie", "InsertaFaunaAcompañante", exception.Message);
+                return "1";
+            }
+        }
     }
 }

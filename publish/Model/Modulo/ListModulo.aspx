@@ -118,11 +118,15 @@
             
             </Columns>
             <SettingsText EmptyDataRow="No existen datos"></SettingsText>
-            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" ></SettingsText>
+            <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
             <SettingsPager PageSize="20"  />
             <Settings ShowTitlePanel="true" />
             <SettingsText Title="Módulos" />
             <Settings ShowFilterRow="True" ShowFooter="True" />
+            <SettingsBehavior AllowSelectByRowClick="true" />
+            <Styles>
+                <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+            </Styles>
         </dx:ASPxGridView>
 
     
@@ -218,10 +222,15 @@
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataTextColumn FieldName="Coordenada_X" VisibleIndex="2" Caption="Coordenada UTM E">
                                         <HeaderStyle Font-Bold="True" />
-                                        <PropertiesTextEdit DisplayFormatString="#.00" ></PropertiesTextEdit>
+                                        <EditItemTemplate>
+                                             <input type="text" name="Coordenada_X" ID="Coordenada_X" runat="server" value='<%# Bind("Coordenada_X") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                                        </EditItemTemplate>
                                     </dx:GridViewDataTextColumn>
                                     <dx:GridViewDataTextColumn FieldName="Coordenada_Y" VisibleIndex="3" Caption="Coordenada UTM N">
                                         <HeaderStyle Font-Bold="True" />
+                                        <EditItemTemplate>
+                                             <input type="text" name="Coordenada_Y" ID="Coordenada_Y" runat="server" value='<%# Bind("Coordenada_Y") %>' onfocus="this.select();" onkeyup="decimal(this,this.value.charAt(this.value.length-1))" />
+                                        </EditItemTemplate>
                                     </dx:GridViewDataTextColumn>
             
                                 </Columns>
@@ -234,6 +243,10 @@
                                 <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
                                 <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
                                 <SettingsText CommandDelete="Eliminar" />
+                                <SettingsBehavior AllowSelectByRowClick="true" />
+                                <Styles>
+                                    <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+                                </Styles>
                             </dx:ASPxGridView>
                            
                         </dx:PanelContent>

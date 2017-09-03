@@ -58,6 +58,10 @@ namespace FPGeoreferencia.Model.Concesion
         {
             (sender as ASPxGridView).DataBind();
         }
+        protected void GrillasEspeciesCustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            (sender as ASPxGridView).DataBind();
+        }
         protected void Modulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddLineasByModulo.DataSource = BusinessData.Dalc.Linea.ObtenerLineasByModulo(ddlModuloByCentro.SelectedValue);
@@ -83,12 +87,12 @@ namespace FPGeoreferencia.Model.Concesion
         }
 
         [WebMethod]
-        public static string SaveOrUpdateMuestreo(string modulo, string linea, string hora, string minutos, string temperatura, string transparencia, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string numeroMuertosMts, string factorCondicion, string ubicacionCuelga, string especie, string coordenadasMuestreo, string fecha, string unidadMedida, string idMuestreo)
+        public static string SaveOrUpdateMuestreo(string modulo, string linea, string hora, string minutos, string temperatura, string transparencia, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string numeroMuertosMts, string factorCondicion, string ubicacionCuelga, string coordenadasMuestreo, string fecha, string idMuestreo)
         {
             try
             {
                 var horaMinutos = hora + ":" + minutos;
-                if (BusinessData.Dalc.Muestreo.CreaOActualizaMuestreo(linea, horaMinutos, temperatura, transparencia, numeroIndividuoMts, numeroIndividuoKg, tallaPromedio, numeroMuertosMts, factorCondicion, ubicacionCuelga, especie, coordenadasMuestreo, fecha, unidadMedida, idMuestreo) == "0")
+                if (BusinessData.Dalc.Muestreo.CreaOActualizaMuestreo(linea, horaMinutos, temperatura, transparencia, numeroIndividuoMts, numeroIndividuoKg, tallaPromedio, numeroMuertosMts, factorCondicion, ubicacionCuelga, coordenadasMuestreo, fecha, idMuestreo) == "0")
                     return "0";
                 return "1";
             }
@@ -106,6 +110,19 @@ namespace FPGeoreferencia.Model.Concesion
             {
                 BusinessData.Entities.Muestreo muestreo = BusinessData.Dalc.Muestreo.ObtenerMuestreo(id);
                 return new JavaScriptSerializer().Serialize(muestreo);
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+        }
+
+        [WebMethod]
+        public static string InsertaFaunaAcompañante(string idMuestreo, string especie, string unidadMedida)
+        {
+            try
+            {
+                return BusinessData.Dalc.Especie.InsertaFaunaAcompañante(idMuestreo, especie, unidadMedida, "M");
             }
             catch (Exception exception)
             {

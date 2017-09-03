@@ -130,6 +130,15 @@ namespace FPGeoreferencia.Model.Linea {
         protected global::System.Web.UI.HtmlControls.HtmlSelect ddlTipoCuelga;
         
         /// <summary>
+        /// Control ddlEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlSelect ddlEspecie;
+        
+        /// <summary>
         /// Control txtUtmEInicio.
         /// </summary>
         /// <remarks>
@@ -209,5 +218,14 @@ namespace FPGeoreferencia.Model.Linea {
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.SqlDataSource SqlDataCuelga;
+        
+        /// <summary>
+        /// Control SqlDataEspecie.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.SqlDataSource SqlDataEspecie;
     }
 }

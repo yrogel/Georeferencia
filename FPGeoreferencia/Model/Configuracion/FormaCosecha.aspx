@@ -49,6 +49,10 @@
         <Settings ShowTitlePanel="true" />
         <SettingsText Title="Forma Cosecha" />
         <Settings ShowFilterRow="True" ShowFooter="True" />
+        <SettingsBehavior AllowSelectByRowClick="true" />
+        <Styles>
+            <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+        </Styles>
                     
     </dx:ASPxGridView>
     </div>

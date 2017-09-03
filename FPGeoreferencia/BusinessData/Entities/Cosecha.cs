@@ -20,7 +20,5 @@ namespace FPGeoreferencia.BusinessData.Entities
         public decimal NumeroIndividuosKg { get; set; }
         public string FechaCosecha { get; set; }
         public decimal IdModulo { get; set; }
-        public decimal IdEspecie { get; set; }
-        public string UnidadMedida { get; set; }
     }
 }

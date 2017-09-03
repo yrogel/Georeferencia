@@ -22,9 +22,6 @@ namespace FPGeoreferencia.BusinessData.Entities
         public string FactorCondicion { get; set; }
         public string UtmEn { get; set; }
         public decimal IdModulo { get; set; }
-        public decimal IdEspecie { get; set; }
-        public string UnidadMedida { get; set; }
-        
         
     }
 }

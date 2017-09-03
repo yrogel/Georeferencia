@@ -76,21 +76,30 @@
             <dx:GridViewDataColumn FieldName="Total_Modulos" VisibleIndex="11" Caption="Total Módulos">
                 <HeaderStyle Font-Bold="True" />
             </dx:GridViewDataColumn>
-             <dx:GridViewDataColumn FieldName="Estado" VisibleIndex="12" Caption="Estado">
+            <dx:GridViewDataComboBoxColumn FieldName="Estado" VisibleIndex="12" Caption="Estado">
                 <HeaderStyle Font-Bold="True" />
-                 <EditFormSettings Visible="False" />
-            </dx:GridViewDataColumn>
+                <PropertiesComboBox ValueField="Estado" DropDownStyle="DropDown" IncrementalFilteringMode="StartsWith"> 
+                    <Items>
+                        <dx:ListEditItem Text="Activo" Value="1" />
+                        <dx:ListEditItem Text="Inactivo" Value="0" />
+                    </Items> 
+                </PropertiesComboBox>
+            </dx:GridViewDataComboBoxColumn>
             
         </Columns>
         <SettingsText EmptyDataRow="No existen datos"></SettingsText>
         <SettingsText CommandEdit="Editar" CommandUpdate="Actualizar" CommandCancel="Cancelar" ></SettingsText>
-        <SettingsPager PageSize="20"  />
+        <SettingsPager PageSize="20" />
         <Settings ShowTitlePanel="true" />
         <SettingsText Title="Usuarios" />
         <Settings ShowFilterRow="True" ShowFooter="True" />
         <SettingsBehavior ConfirmDelete="True"></SettingsBehavior>
         <SettingsText ConfirmDelete="¿Está seguro de eliminar el registro?" />
         <SettingsText CommandDelete="Eliminar" />
+        <SettingsBehavior AllowSelectByRowClick="true" />
+        <Styles>
+            <SelectedRow BackColor="#1d89c8"></SelectedRow>                                     
+        </Styles>
                     
     </dx:ASPxGridView>
     
@@ -232,6 +241,7 @@
             <asp:Parameter Name="Correo" Type="String" />
             <asp:Parameter Name="Total_Centro_Cultivo" Type="String" />
             <asp:Parameter Name="Total_Modulos" Type="String" />
+            <asp:Parameter Name="Estado" Type="Int32" />
         </UpdateParameters>
         <DeleteParameters>
             <asp:Parameter Name="Id" Type="Int32"/>

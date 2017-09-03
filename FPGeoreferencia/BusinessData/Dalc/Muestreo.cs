@@ -9,7 +9,7 @@ namespace FPGeoreferencia.BusinessData.Dalc
 {
     public class Muestreo
     {
-        public static string CreaOActualizaMuestreo(string linea, string horaMinutos, string temperatura, string transparencia, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string numeroMuertosMts, string factorCondicion, string ubicacionCuelga, string especie, string coordenadasMuestreo, string fecha, string unidadMedida, string idMuestreo)
+        public static string CreaOActualizaMuestreo(string linea, string horaMinutos, string temperatura, string transparencia, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string numeroMuertosMts, string factorCondicion, string ubicacionCuelga, string coordenadasMuestreo, string fecha, string idMuestreo)
         {
             try
             {
@@ -27,8 +27,6 @@ namespace FPGeoreferencia.BusinessData.Dalc
                 database.AddInParameter(cmd, "numeroMuertos", DbType.Int32, numeroMuertosMts);
                 database.AddInParameter(cmd, "factorCondicion", DbType.String, factorCondicion);
                 database.AddInParameter(cmd, "utmEN", DbType.String, coordenadasMuestreo);
-                database.AddInParameter(cmd, "unidadMedida", DbType.String, unidadMedida);
-                database.AddInParameter(cmd, "especie", DbType.Decimal, especie);
                 database.AddInParameter(cmd, "idMuestreo", DbType.Int32, idMuestreo);
                 database.ExecuteNonQuery(cmd);
 
@@ -91,10 +89,6 @@ namespace FPGeoreferencia.BusinessData.Dalc
                             muestreo.UtmEn = dataReader["Utm_E_N"].ToString();
                         if (!(dataReader["Id_Modulo"] is DBNull) && (dataReader["Id_Modulo"] != null))
                             muestreo.IdModulo = decimal.Parse(dataReader["Id_Modulo"].ToString());
-                        if (!(dataReader["Id_Especie"] is DBNull) && (dataReader["Id_Especie"] != null))
-                            muestreo.IdEspecie = decimal.Parse(dataReader["Id_Especie"].ToString());
-                        if (!(dataReader["Unidad_Medida"] is DBNull) && (dataReader["Unidad_Medida"] != null))
-                            muestreo.UnidadMedida = dataReader["Unidad_Medida"].ToString();
                     }
                 }
                 return muestreo;

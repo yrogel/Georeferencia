@@ -64,6 +64,10 @@ namespace FPGeoreferencia.Model.Concesion
         {
             (sender as ASPxGridView).DataBind();
         }
+        protected void GrillasEspeciesCustomCallback(object sender, ASPxGridViewCustomCallbackEventArgs e)
+        {
+            (sender as ASPxGridView).DataBind();
+        }
         protected void Modulos_SelectedIndexChanged(object sender, EventArgs e)
         {
             ddLineasByModulo.DataSource = BusinessData.Dalc.Linea.ObtenerLineasByModulo(ddlModuloByCentro.SelectedValue);
@@ -89,11 +93,11 @@ namespace FPGeoreferencia.Model.Concesion
         }
 
         [WebMethod]
-        public static string SaveOrUpdateCosecha(string modulo, string linea, string tipoCosecha, string formaCosecha,string kgSucioMetro, string kgSucioCuelga, string kgLimpioMetro, string kgLimpioCuelga, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string factorCondicion, string especie, string fecha, string unidadMedida, string idCosecha)
+        public static string SaveOrUpdateCosecha(string modulo, string linea, string tipoCosecha, string formaCosecha,string kgSucioMetro, string kgSucioCuelga, string kgLimpioMetro, string kgLimpioCuelga, string numeroIndividuoMts, string numeroIndividuoKg, string tallaPromedio, string factorCondicion, string fecha, string idCosecha)
         {
             try
             {
-                if (BusinessData.Dalc.Cosecha.CreaOActualizaCosecha(linea, tipoCosecha, formaCosecha, kgSucioMetro, kgSucioCuelga, kgLimpioMetro, kgLimpioCuelga, numeroIndividuoMts, numeroIndividuoKg, tallaPromedio, factorCondicion, especie, fecha, unidadMedida, idCosecha) == "0")
+                if (BusinessData.Dalc.Cosecha.CreaOActualizaCosecha(linea, tipoCosecha, formaCosecha, kgSucioMetro, kgSucioCuelga, kgLimpioMetro, kgLimpioCuelga, numeroIndividuoMts, numeroIndividuoKg, tallaPromedio, factorCondicion, fecha, idCosecha) == "0")
                     return "0";
                 return "1";
             }
@@ -111,6 +115,19 @@ namespace FPGeoreferencia.Model.Concesion
             {
                 BusinessData.Entities.Cosecha cosecha = BusinessData.Dalc.Cosecha.ObtenerCosecha(id);
                 return new JavaScriptSerializer().Serialize(cosecha);
+            }
+            catch (Exception exception)
+            {
+                return exception.Message;
+            }
+        }
+
+        [WebMethod]
+        public static string InsertaFaunaAcompañante(string idCosecha, string especie, string unidadMedida)
+        {
+            try
+            {
+                return BusinessData.Dalc.Especie.InsertaFaunaAcompañante(idCosecha, especie, unidadMedida,"C");
             }
             catch (Exception exception)
             {
